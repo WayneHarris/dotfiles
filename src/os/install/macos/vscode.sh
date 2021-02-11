@@ -22,7 +22,6 @@ printf "\n"
 # Install the VSCode plugins
 install_plugin "MarkdownLint" "DavidAnson.vscode-markdownlint"
 install_plugin "EditorConfig" "EditorConfig.EditorConfig"
-install_plugin "Vim" "vscodevim.vim"
 
 # Close VSCode
 osascript -e 'quit app "Visual Studio Code"'
