@@ -1,12 +1,8 @@
 #!/bin/bash
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 # Lock screen.
 
 alias afk="gnome-screensaver-command --lock"
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Shorter commands for the `Advanced Packaging Tool`
 
@@ -16,20 +12,14 @@ alias apts="sudo apt-cache search"
 alias aptu="sudo apt-get update \
                 && sudo apt-get upgrade"
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 # Empty trash.
 
 alias empty-trash="rm -rf ~/.local/share/Trash/files/*"
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Hide/Show desktop icons.
 
 alias hide-desktop-icons="gsettings set org.gnome.desktop.background show-desktop-icons false"
 alias show-desktop-icons="gsettings set org.gnome.desktop.background show-desktop-icons true"
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Get local IP.
 
@@ -39,13 +29,9 @@ alias local-ip="ifconfig \
                     | cut -d: -f2 \
                     | cut -d' ' -f1"
 
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
 # Open from the terminal.
 
 alias o="xdg-open"
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Update applications and CLTs.
 
