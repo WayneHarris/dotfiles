@@ -27,4 +27,3 @@ tests export-ignore
 src/git/gitattributes   linguist-language=gitattributes
 src/git/gitconfig       linguist-language=gitconfig
 src/git/gitignore       linguist-language=gitignore
-src/tmux/tmux.conf      linguist-language=sh
