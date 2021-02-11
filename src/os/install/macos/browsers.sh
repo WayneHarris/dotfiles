@@ -28,3 +28,8 @@ brew_install "Firefox Nightly" "firefox-nightly" "--cask"
 
 printf "\n"
 brew_install "Safari Technology Preview" "safari-technology-preview" "--cask"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+printf "\n"
+brew_install "Microsoft Edge" "microsoft-edge" "--cask"
