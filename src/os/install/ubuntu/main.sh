@@ -19,7 +19,6 @@ upgrade
 ./misc.sh
 ./misc_tools.sh
 ./../npm.sh
-./tmux.sh
 ./../vim.sh
 
 ./cleanup.sh
