@@ -67,7 +67,7 @@ set_xcode_developer_directory() {
     # Point the `xcode-select` developer directory to
     # the appropriate directory from within `Xcode.app`.
     #
-    # https://github.com/alrra/dotfiles/issues/13
+    # https://github.com/wayneharris/dotfiles/issues/13
 
     sudo xcode-select -switch "/Applications/Xcode.app/Contents/Developer" &> /dev/null
     print_result $? "Make 'xcode-select' developer directory point to the appropriate directory from within Xcode.app"
