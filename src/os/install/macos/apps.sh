@@ -23,5 +23,7 @@ brew_install "Sublime Text" "sublime-text" "--cask"
 brew_install "Setapp" "setapp" "--cask"
 brew_install "Tinkerwell" "tinkerwell" "--cask"
 brew_install "WhatsApp" "whatsapp" "--cask"
+brew_install "Unarchiver" "the-unarchiver" "--cask"
+brew_install "VLC" "vlc" "--cask"
 
 
