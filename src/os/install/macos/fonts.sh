@@ -8,4 +8,5 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 
 print_in_purple "\n   Fonts\n\n"
 
-brew_install "Fira Code" "font-fira-code"
+brew tap homebrew/cask-fonts
+brew_install "Fira Code" "font-fira-code" "--cask"
