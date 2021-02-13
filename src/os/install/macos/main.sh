@@ -18,7 +18,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")" \
 ./gpg.sh
 ./fonts.sh
 ./image_tools.sh
-./misc.sh
 ./misc_tools.sh
 ./php.sh
 ./../npm.sh
