@@ -29,8 +29,8 @@ execute "defaults write com.apple.print.PrintingPrefs 'Quit When Finished' -bool
 execute "defaults write com.apple.screencapture disable-shadow -bool true" \
     "Disable shadow in screenshots"
 
-execute "defaults write com.apple.screencapture location -string '$HOME/Desktop'" \
-    "Save screenshots to the Desktop"
+execute "defaults write com.apple.screencapture location -string '$HOME/Downloads/Screenshots'" \
+    "Save screenshots to the downloads"
 
 execute "defaults write com.apple.screencapture show-thumbnail -bool false" \
     "Do not show thumbnail"
