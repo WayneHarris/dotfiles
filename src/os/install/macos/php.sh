@@ -21,3 +21,6 @@ pecl install imagick
 # Install Redis mkdir fix first
 mkdir -p /usr/local/lib/php/pecl
 pecl install redis-5.0.2
+
+brew_install "Composer" "composer"
+export PATH="$HOME/.composer/vendor/bin:$PATH"
