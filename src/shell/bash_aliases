@@ -42,6 +42,17 @@ alias y="yarn"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Laravel Artisans
+alias art='php artisan'
+alias am='php artisan migrate'
+alias amr='php artisan migrate:rollback'
+alias amf='php artisan migrate:fresh'
+alias adbs='php artisan db:seed'
+alias amfdbs='php artisan migrate:rollback && php artisan migrate && php artisan db:seed'
+alias artclear='art clear && art config:clear && art cache:clear && art view:clear && art route:clear && composer dump-autoload'
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Load OS specific configs.
 
 . "$OS/bash_aliases"
