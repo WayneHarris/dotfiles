@@ -1,0 +1,55 @@
+{
+    "extensions.ignoreRecommendations": false,
+    "workbench.colorTheme": "Dracula",
+    "workbench.preferredDarkColorTheme": "Dracula",
+    "workbench.iconTheme": "vscode-icons",
+    "editor.fontFamily": "Hack, Menlo, Monaco, 'Courier New', monospace",
+    "files.encoding": "utf8",
+    "files.autoSave": "onFocusChange",
+    "java.home": "/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home",
+    "java.configuration.runtimes": [
+      {
+        "name": "JavaSE-1.8",
+        "path": "/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+      },
+      {
+        "name": "JavaSE-11",
+        "path": "/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home",
+        "default": true
+      }
+    ],
+    "sonarlint.connectedMode.connections.sonarcloud": [
+      {
+        "organizationKey": "glovo"
+      }
+    ],
+    "files.exclude": {
+      "**/.classpath": true,
+      "**/.project": true,
+      "**/.settings": true,
+      "**/.factorypath": true
+  },
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "explorer.confirmDelete": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "python.languageServer": "Default",
+  "yaml.customTags": [
+    "!encrypted/pkcs1-oaep scalar",
+    "!vault scalar"
+  ],
+  "redhat.telemetry.enabled": true,
+  "ansible.validate.executablePath": "",
+  "go.toolsManagement.autoUpdate": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.codeLens.enabled": false,
+  "xml.server.binary.trustedHashes": [
+    "8080595d4aee6c70818be8c8c8f58db8e2214082492def527ac383970e75da4c"
+  ],
+  "remote.SSH.defaultExtensions": [
+    "gitpod.gitpod-remote-ssh"
+  ]
+}
