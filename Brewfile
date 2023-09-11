@@ -11,6 +11,7 @@ tap "1password/tap"
 tap "github/gh"
 tap "hashicorp/tap"
 
+brew "antigen"
 brew "gh"
 brew "git"
 brew "mas"
