@@ -1,2 +1,6 @@
 git/gitconfig.symlink
 *~
+.idea/*
+.vscode/*
+
+.DS_Store
