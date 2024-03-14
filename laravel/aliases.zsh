@@ -1,10 +1,10 @@
 # Laravel, Valet and PHP
 
-alias php="valet php"
-alias composer="valet composer"
-alias which-php="valet which-php"
+alias php="herd php"
+alias composer="herd composer"
+alias which-php="herd which-php"
 alias sail="[ -f sail ] && sh sail || sh vendor/bin/sail"
-alias pint="./vendor/bin/pint -v"
+alias pint="./vendor/bin/pint"
 alias rector="./vendor/bin/rector"
 alias art='php artisan'
 alias am='php artisan migrate'
