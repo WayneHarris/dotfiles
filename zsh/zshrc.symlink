@@ -6,7 +6,7 @@ export ZSH="$HOME/.dotfiles"
 export PROJECTS="$HOME/Sites"
 
 # your default editor
-export EDITOR='vim'
+export EDITOR='nano'
 
 # all of our zsh files
 typeset -U config_files
@@ -23,10 +23,7 @@ source /opt/homebrew/share/antigen/antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundle git
-antigen bundle heroku
 antigen bundle pip
-antigen bundle lein
-antigen bundle command-not-found
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # apply the antigen configuration
@@ -63,9 +60,6 @@ done
 
 unset config_files
 
-# use .localrc for SUPER SECRET CRAP that you don't
+# use .localrc for secrets that you don't
 # want in your public, versioned repo.
 [[ -a ~/.localrc ]] && source ~/.localrc
-
-# iterm shell integration
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
