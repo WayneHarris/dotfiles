@@ -17,3 +17,6 @@ $git_status\
 success_symbol = "[❯](bold green)"
 error_symbol = "[✖](bold red)"
 vicmd_symbol = "[❮](bold green)"
+
+[php]
+format = 'via [🔹 $version](147 bold) '
