@@ -1,5 +1,5 @@
 #!/bin/sh
-# grc overides for ls
+# grc overrides for ls
 #   Made possible through contributions from generous benefactors like
 #   `brew install coreutils`
 
@@ -34,8 +34,6 @@ alias mv="mv -iv"
 #             │└─ list moved files
 #             └─ prompt before overwriting an existing file
 
-alias rm="rm -rf --"
-
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 alias :q="exit"
@@ -53,7 +51,6 @@ alias q="exit"
 
 alias grep="grep --color=auto"
 alias duf="du -sh * | sort -hr"
-alias less="less -r"
 alias lsopenports='lsof -i -n -P'
 
 if [ "$(uname -s)" != "Darwin" ]; then
