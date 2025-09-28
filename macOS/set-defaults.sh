@@ -292,11 +292,6 @@ defaults write com.apple.QuickTimePlayerX MGPlayMovieOnOpen -bool true
 defaults write com.apple.terminal "Default Window Settings" -string "terminal-ocean-dark"
 defaults write com.apple.terminal "Startup Window Settings" -string "terminal-ocean-dark"
 
-#
-# iTerm
-#
-# Don’t display the annoying prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 #
 # Transmission.app
