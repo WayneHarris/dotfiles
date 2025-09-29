@@ -3,12 +3,17 @@ if [ "$(uname -s)" != "Darwin" ]; then
   exit 0
 fi
 
-if [ ! -f ~/Library/Application\ Support/Code/User/settings.json ]; then
-  ln -s ~/.vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-else
-  rm ~/Library/Application\ Support/Code/User/settings.json
-  ln -s ~/.vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+# Create VS Code User directory if it doesn't exist
+VSCODE_USER_DIR=~/Library/Application\ Support/Code/User
+if [ ! -d "$VSCODE_USER_DIR" ]; then
+  mkdir -p "$VSCODE_USER_DIR"
 fi
+
+# Create or update the symlink to settings.json
+if [ -L "$VSCODE_USER_DIR/settings.json" ] || [ -f "$VSCODE_USER_DIR/settings.json" ]; then
+  rm "$VSCODE_USER_DIR/settings.json"
+fi
+ln -s ~/.vscode/settings.json "$VSCODE_USER_DIR/settings.json"
 
 
 if test "$(which code)"; then
