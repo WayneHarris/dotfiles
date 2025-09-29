@@ -372,4 +372,4 @@ set -e
 
 # Remove duplicates in the "Open With" menu
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister \
-  -domain local -domain system -domain user 2>/dev/null || true
+  -r -domain local -domain system -domain user 2>/dev/null || true
