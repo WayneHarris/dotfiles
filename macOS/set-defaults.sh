@@ -19,9 +19,6 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `set-defaults.sh` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
-
 # Disable Resume system-wide
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
@@ -41,7 +38,7 @@ defaults write com.apple.dock wvous-bl-corner -int 5
 defaults write com.apple.dock wvous-bl-modifier -int 0
 
 # Enable transparency in the menu bar and elsewhere
-defaults write com.apple.UniversalAccess reduceTransparency -bool false
+defaults write com.apple.UniversalAccess reduceTransparency -bool false 2>/dev/null || true
 
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
@@ -64,9 +61,6 @@ sudo pmset -a lidwake 1
 # Restart automatically on power loss
 sudo pmset -a autorestart 1
 
-# Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
-
 # Sleep the display after 15 minutes
 sudo pmset -a displaysleep 15
 
@@ -80,7 +74,7 @@ sudo pmset -b sleep 20
 sudo pmset -a standbydelay 21600
 
 # Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off > /dev/null
+sudo pmset -a sleep 0
 
 # Hibernation mode
 # 0: Disable hibernation (speeds up entering sleep mode)
@@ -151,7 +145,7 @@ defaults write com.apple.finder ShowPathbar -bool true
 
 # Finder: allow text selection in the Quick Look window
 defaults write com.apple.finder QLEnableTextSelection -bool true
-xattr -d -r com.apple.quarantine ~/Library/QuickLook/QLColorCode.qlgenerator
+[ -f ~/Library/QuickLook/QLColorCode.qlgenerator ] && xattr -d -r com.apple.quarantine ~/Library/QuickLook/QLColorCode.qlgenerator 2>/dev/null || true
 
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
@@ -172,14 +166,14 @@ sudo chflags nohidden /Volumes
 #
 
 # Hide Safari's bookmark bar.
-defaults write com.apple.Safari ShowFavoritesBar -bool true
+defaults write com.apple.Safari ShowFavoritesBar -bool true 2>/dev/null || true
 
 # Set up Safari for development.
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
-defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true 2>/dev/null || true
+defaults write com.apple.Safari IncludeDevelopMenu -bool true 2>/dev/null || true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true 2>/dev/null || true
+defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true 2>/dev/null || true
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true 2>/dev/null || true
 
 #
 # DOCK
@@ -230,9 +224,6 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # Avoiding the creation of .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-
-# Disable the "Are you sure you want to open this application?" dialog
-defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 #
 # Mac App Store
@@ -381,4 +372,4 @@ set -e
 
 # Remove duplicates in the "Open With" menu
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister \
-  -kill -r -domain local -domain system -domain user
+  -domain local -domain system -domain user 2>/dev/null || true
