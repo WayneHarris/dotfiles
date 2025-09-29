@@ -17,8 +17,7 @@ success() {
 
 # Check if NVM is already installed
 if [ -d "$HOME/.nvm" ]; then
-  info "NVM already installed, skipping..."
-  success "NVM installation check complete"
+  success "NVM already installed, skipping installation"
   exit 0
 fi
 
