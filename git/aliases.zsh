@@ -9,8 +9,8 @@ alias gco='git checkout'
 alias gb='git branch'
 alias ga='git add'
 alias gaa='git add -A'
-alias gcm='git commit -S -m'
-alias gs='git status -sb'
+alias gcm='git commit -m'
+alias gstatus='git status -sb'
 alias gcb='git-copy-branch-name'
 alias gst='git status'
 alias grh='git reset HEAD'
@@ -22,10 +22,3 @@ alias gpo='git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)'
 gi() {
   curl -s "https://www.toptal.com/developers/gitignore/api/$@";
 }
-
-git-lang() {
-  unset LANG
-  git "$@"
-}
-
-alias git='git-lang'
