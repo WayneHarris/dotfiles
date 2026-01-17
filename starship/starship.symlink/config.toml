@@ -10,7 +10,7 @@ $git_branch\
 $git_commit\
 $git_state\
 $git_metrics\
-$git_status\
+$php\
 """
 
 [character]
@@ -18,5 +18,11 @@ success_symbol = "[❯](bold green)"
 error_symbol = "[✖](bold red)"
 vicmd_symbol = "[❮](bold green)"
 
+[directory]
+style = 'bold green'
+
+[git_branch]
+style = 'bold green'
+
 [php]
-format = 'via [🔹 $version](147 bold) '
+format = '[🐘 $version](147 bold) '
