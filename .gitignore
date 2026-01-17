@@ -4,3 +4,4 @@ git/gitconfig.symlink
 .vscode/*
 
 .DS_Store
+Brewfile.lock.json
