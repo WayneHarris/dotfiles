@@ -1,18 +1,56 @@
+# OS
 .DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.backup
+.env.production
+.env.testing
+/auth.json
+venv/
+
+# IDE
+/.cursor
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed
+.phpactor.json
+
+# Testing
+/.phpunit.cache
+.phpunit.result.cache
+
+# AI agents
+/.ai
+/.claude
+/.gemini
+/.github/copilot-instructions.md
+/.junie
+.mcp.json
+AGENTS.md
+boost.json
+CLAUDE.md
+GEMINI.md
+opencode.json
+
+MISC
 .svn
 *~
 *.swp
 *.rbc
 *.class
 *.iml
-.idea
 .java-version
 deploy.sh
 compile
-.vscode/
 .project
 .settings/
 .classpath
 .history/
 .factorypath
-venv/
