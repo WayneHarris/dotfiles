@@ -1,0 +1,16 @@
+# Theme
+theme = Dark+
+
+# Font
+font-size = 14
+
+# Window
+window-padding-x = 10
+window-padding-y = 10
+background-opacity = 0.97
+
+# Shell integration
+shell-integration = zsh
+
+# Cursor
+cursor-style = bar
