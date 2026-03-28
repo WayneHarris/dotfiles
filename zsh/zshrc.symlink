@@ -6,7 +6,7 @@ export ZSH="$HOME/.dotfiles"
 export PROJECTS="$HOME/Sites"
 
 # your default editor
-export EDITOR='pstorm'
+export EDITOR='phpstorm'
 
 export HOMEBREW_NO_ENV_HINTS=1
 
