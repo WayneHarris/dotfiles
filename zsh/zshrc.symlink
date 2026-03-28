@@ -6,7 +6,9 @@ export ZSH="$HOME/.dotfiles"
 export PROJECTS="$HOME/Sites"
 
 # your default editor
-export EDITOR='nano'
+export EDITOR='pstorm'
+
+export HOMEBREW_NO_ENV_HINTS=1
 
 # all of our zsh files
 typeset -U config_files
@@ -63,3 +65,11 @@ unset config_files
 # use .localrc for secrets that you don't
 # want in your public, versioned repo.
 [[ -a ~/.localrc ]] && source ~/.localrc
+
+# CLI tools
+eval "$(zoxide init zsh)"
+eval "$(atuin init zsh)"
+eval "$(fzf --zsh)"
+alias cat="bat"
+alias ls="eza --icons --group-directories-first"
+alias ll="eza --icons --group-directories-first -la"
