@@ -18,6 +18,7 @@ brew "shellcheck"
 brew "starship"
 brew "vim"
 brew "wget"
+brew "yazi"
 brew "zoxide"
 brew "zsh"
 
