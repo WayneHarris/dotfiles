@@ -4,12 +4,17 @@
 [user]
     name = AUTHORNAME
     email = AUTHOREMAIL
+[credential]
     helper = GIT_CREDENTIAL_HELPER
 [color]
-    diff    = auto
-    status  = auto
-    branch  = auto
-    ui      = true
+    diff   = auto
+    status = auto
+    branch = auto
+[color "diff-highlight"]
+    oldNormal    = red
+    oldHighlight = red bold 52
+    newNormal    = green
+    newHighlight = green bold 22
 [core]
     excludesfile      = ~/.gitignore
     editor            = vim
@@ -21,7 +26,7 @@
 [apply]
     whitespace = nowarn
 [help]
-    autocorrect = 1
+    autocorrect = 10
 [merge]
     tool = diffmerge
 [mergetool "diffmerge"]
@@ -29,24 +34,25 @@
     trustExitCode = true
     keepBackup    = false
 [diff]
-    tool = diffmerge
+    tool       = diffmerge
+    algorithm  = histogram
+    colorMoved = default
 [difftool "diffmerge"]
     cmd = diffmerge $LOCAL $REMOTE
 [difftool]
     prompt = false
-[color "diff-highlight"]
-    oldNormal = red
-    oldHighlight = red bold 52
-    newNormal = green
-    newHighlight = blue bold 22
 [grep]
     extendRegexp = true
     lineNumber   = true
-[push]
-    default = simple
 [pager]
     diff = diff-so-fancy | less --tabs=4 -RFX
-    log = diff-so-fancy | less --tabs=4 -RFX
+    log  = diff-so-fancy | less --tabs=4 -RFX
     show = diff-so-fancy | less --tabs=4 -RFX
 [pull]
-  ff = only
+    ff = only
+[rerere]
+    enabled = true
+[rebase]
+    autoStash = true
+[branch]
+    sort = -committerdate
