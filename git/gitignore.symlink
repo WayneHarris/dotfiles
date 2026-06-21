@@ -26,19 +26,6 @@ venv/
 /.phpunit.cache
 .phpunit.result.cache
 
-# AI agents
-/.ai
-/.claude
-/.gemini
-/.github/copilot-instructions.md
-/.junie
-.mcp.json
-AGENTS.md
-boost.json
-CLAUDE.md
-GEMINI.md
-opencode.json
-
 MISC
 .svn
 *~
