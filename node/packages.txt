@@ -1,0 +1,6 @@
+@github/copilot
+@google/gemini-cli
+@openai/codex
+@tauri-apps/cli
+corepack
+puppeteer

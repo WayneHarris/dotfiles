@@ -15,22 +15,18 @@ success() {
   printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
 }
 
-# Check if NVM is already installed
-if [ -d "$HOME/.nvm" ]; then
-  success "NVM already installed, skipping installation"
-  exit 0
+if [ ! -d "$HOME/.nvm" ]; then
+  info "Installing NVM..."
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+else
+  success "NVM already installed"
 fi
-
-info "Installing NVM..."
-
-# Install NVM using the official script
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
 # Source NVM for immediate use
 export NVM_DIR="$HOME/.nvm"
+# shellcheck disable=SC1091
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Install and use Node version from .nvmrc if it exists
 if [ -f "$HOME/.nvmrc" ]; then
   info "Installing Node version from .nvmrc..."
   nvm install
@@ -41,4 +37,16 @@ else
   nvm use --lts
 fi
 
-success "NVM installation complete"
+packages=()
+while IFS= read -r package; do
+  if [ -n "$package" ] && [[ "$package" != \#* ]]; then
+    packages+=("$package")
+  fi
+done < "$HOME/.dotfiles/node/packages.txt"
+
+if [ "${#packages[@]}" -gt 0 ]; then
+  info "Installing global npm packages..."
+  npm install --global "${packages[@]}"
+fi
+
+success "Node tooling installation complete"
