@@ -41,3 +41,4 @@ compile
 .classpath
 .history/
 .factorypath
+**/.claude/settings.local.json
