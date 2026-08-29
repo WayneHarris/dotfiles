@@ -1,34 +1,127 @@
 #!/bin/sh
-set -e
-#
-# dot
-#
-# `dot` handles installation, updates, things like that. Run it periodically
-# to make sure you're on the latest and greatest.
-main() {
-  cd ~/.dotfiles
-  # shellcheck disable=SC2155
-  export ZSH="$(pwd)"
-  echo "› Updating dotfiles..."
-  git pull origin main
+set -eu
 
-  echo "› Updating Homebrew..."
-  brew update
+DOTFILES_ROOT=$(cd -- "$(dirname "$0")/.." && pwd)
 
-  # Run Homebrew through the Brewfile
-  echo "› brew bundle"
-  brew bundle
+usage() {
+  cat <<'EOF'
+Usage: dot <command>
 
-  # find the installers and run them iteratively
-  find . -name install.sh | grep -E -v "homebrew|build" | while read -r installer; do
-    echo "› ${installer}..."
-    sh -c "$installer"
-  done
-
-  echo ""
-  echo "✓ Dotfiles update complete!"
-  echo ""
-  echo "Note: To apply macOS defaults, run: ~/.dotfiles/macOS/set-defaults.sh"
+Commands:
+  doctor  Check the dotfiles and agent-tooling installation without changing it
+  install Install the declared packages and run one-time application setup
+  update  Pull a clean checkout and update declared packages and configuration
+EOF
 }
 
-main
+run_installer() {
+  installer=$1
+  echo "› $installer"
+  "$DOTFILES_ROOT/$installer"
+}
+
+install_node_tooling() {
+  run_installer node/install.sh
+}
+
+install_homebrew_bundle() {
+  echo "› brew bundle"
+  brew bundle --file "$DOTFILES_ROOT/Brewfile"
+}
+
+install_application_configuration() {
+  run_installer ghostty/install.sh
+  run_installer vscode.symlink/install.sh
+}
+
+install_all() {
+  install_node_tooling
+  install_homebrew_bundle
+  install_application_configuration
+  run_installer terminal/install.sh
+  echo "✓ Dotfiles installation complete"
+}
+
+update_all() {
+  if [ -n "$(git -C "$DOTFILES_ROOT" status --porcelain)" ]; then
+    echo "Dotfiles update refused: $DOTFILES_ROOT has uncommitted changes." >&2
+    echo "Commit, stash or discard them before running 'dot update'." >&2
+    exit 1
+  fi
+
+  echo "› Updating dotfiles"
+  git -C "$DOTFILES_ROOT" pull --ff-only origin main
+
+  echo "› Updating Homebrew"
+  brew update
+  install_homebrew_bundle
+  install_node_tooling
+  install_application_configuration
+  echo "✓ Dotfiles update complete"
+  echo "Run ~/.dotfiles/macOS/set-defaults.sh separately to reapply macOS defaults."
+}
+
+doctor() {
+  status=0
+
+  if git -C "$DOTFILES_ROOT" diff --check; then
+    echo "PASS dotfiles diff has no whitespace errors"
+  else
+    echo "FAIL dotfiles diff contains whitespace errors"
+    status=1
+  fi
+
+  if zsh -n "$DOTFILES_ROOT/zsh/zshrc" "$DOTFILES_ROOT"/*/*.zsh; then
+    echo "PASS Zsh configuration parses"
+  else
+    echo "FAIL Zsh configuration does not parse"
+    status=1
+  fi
+
+  if /usr/bin/ruby -c "$DOTFILES_ROOT/Brewfile" >/dev/null; then
+    echo "PASS Brewfile parses"
+  else
+    echo "FAIL Brewfile does not parse"
+    status=1
+  fi
+
+  # shellcheck disable=SC2016
+  if [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ] && grep -Fq 'source "$HOME/.dotfiles/zsh/zshrc"' "$HOME/.zshrc"; then
+    echo "PASS local .zshrc loader is installed"
+  else
+    echo "FAIL local .zshrc loader is missing or still symlinked"
+    status=1
+  fi
+
+  if [ -x "$HOME/.agents/scripts/agent-health.py" ]; then
+    if "$HOME/.agents/scripts/agent-health.py"; then
+      echo "PASS agent health"
+    else
+      echo "FAIL agent health"
+      status=1
+    fi
+  else
+    echo "WARN agent toolbox is not installed; skipped agent health"
+  fi
+
+  return "$status"
+}
+
+case "${1:-}" in
+  doctor)
+    doctor
+    ;;
+  install)
+    install_all
+    ;;
+  update)
+    update_all
+    ;;
+  -h|--help|help|"")
+    usage
+    ;;
+  *)
+    usage >&2
+    exit 2
+    ;;
+esac

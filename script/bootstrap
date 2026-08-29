@@ -141,9 +141,39 @@ link_dotfiles () {
   done
 }
 
+install_zsh_loader () {
+  local src="$DOTFILES_ROOT/zsh/zshrc.loader"
+  local dst="$HOME/.zshrc"
+  local old_src="$DOTFILES_ROOT/zsh/zshrc.symlink"
+
+  if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$old_src" ]
+  then
+    rm "$dst"
+    cp "$src" "$dst"
+    success "replaced the tracked .zshrc symlink with a local loader"
+    return
+  fi
+
+  if [ ! -e "$dst" ]
+  then
+    cp "$src" "$dst"
+    success "installed the local .zshrc loader"
+    return
+  fi
+
+  # shellcheck disable=SC2016
+  if grep -Fq 'source "$HOME/.dotfiles/zsh/zshrc"' "$dst"
+  then
+    success "local .zshrc loader already installed"
+    return
+  fi
+
+  info "leaving the existing $dst unchanged; add: source \"\$HOME/.dotfiles/zsh/zshrc\""
+}
+
 install_apps() {
   info " Installing Applications"
-  if ./bin/dot; then
+  if ./bin/dot install; then
     success "Applications installed"
   else
     fail "Error installing Applications"
@@ -172,6 +202,7 @@ set_macos_defaults() {
 
 setup_gitconfig
 link_dotfiles
+install_zsh_loader
 setup_zsh
 install_apps
 set_macos_defaults

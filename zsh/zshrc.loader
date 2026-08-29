@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+# Application installers may append machine-local configuration to this file.
+source "$HOME/.dotfiles/zsh/zshrc"

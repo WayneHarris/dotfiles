@@ -5,3 +5,4 @@ git/gitconfig.symlink
 
 .DS_Store
 Brewfile.lock.json
+*.bak.*
