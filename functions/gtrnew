@@ -1,2 +1,0 @@
-#!/bin/sh
-git gtr new "$1" && cd "$(git gtr go "$1")"
