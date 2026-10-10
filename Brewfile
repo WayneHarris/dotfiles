@@ -2,6 +2,7 @@ cask_args appdir: "/Applications"
 
 
 tap "1password/tap"
+tap "ampcode/tap"
 tap "anomalyco/tap"
 tap "github/gh"
 tap "hashicorp/tap"
@@ -25,6 +26,7 @@ brew "zsh"
 
 # dev tooling
 brew "act"
+brew "ampcode/tap/ampcode"
 brew "anomalyco/tap/opencode"
 brew "awscli"
 brew "caddy"
